@@ -1,0 +1,5 @@
+<%= simple_form_for @game do |f| %>
+  <%= f.input :title %>
+  <%= f.input :players, collection: 1..4 %>
+  <%= f.submit 'Create game' %>
+<% end %>

@@ -1,0 +1,7 @@
+<h1> Bowlerama! </h1>
+<%= link_to 'Create game', new_game_path %>
+<ul>
+  <% @games.each do |game| %>
+     <li><%= game.title %></li>
+  <% end %>
+</ul>
