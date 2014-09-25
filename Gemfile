@@ -24,6 +24,8 @@ gem 'spring',        group: :development
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'pry'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
 end
 

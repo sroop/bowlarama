@@ -4,6 +4,7 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
+require 'shoulda/matchers'
 
 include Warden::Test::Helpers
 Warden.test_mode!
