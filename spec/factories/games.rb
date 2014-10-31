@@ -3,6 +3,5 @@
 FactoryGirl.define do
   factory :game do
     title "MyString"
-    players 1
   end
 end

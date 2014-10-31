@@ -1,28 +1,37 @@
 require 'rails_helper'
 
-feature 'User manages games', %q{
-  So that I can manage games
-  As a user
-  I want to create, update and delete them
-} do
+feature "Games" do
 
-  let!(:user) { create(:user) }
+  let!(:sroop) { create(:user, username: "sr00p") }
+  let!(:drew) { create(:user, username: "drusk0") }
+  let!(:rain) { create(:user, username: "r00ni") }
 
-  before do 
-    login_as user
-    visit '/'
+  before do
+    login_as sroop
+    visit root_path
   end
 
-  scenario 'No games' do
-    expect(page).to have_content("Bowlerama!")
-  end
-
-  scenario 'User creates a game' do
+  scenario 'Creating a game' do
     click_on 'Create game'
     fill_in 'Title', with: 'Awesome Game'
-    select('4', :from => 'Players')
+    select 'drusk0'
     click_on 'Create game'
     expect(page).to have_content('Awesome Game')
+    click_on 'Awesome Game'
+    expect(page).to have_content('drusk0')
+  end
+
+  scenario 'Editing and updating a game' do
+    click_on 'Create game'
+    fill_in 'Title', with: 'Awesome Game'
+    select 'drusk0'
+    click_on 'Create game'
+
+    click_on 'Awesome Game'
+    click_on 'Add more players'
+    select 'r00ni'
+    click_on 'Update'
+    expect(page).to have_content('r00ni')
   end
 
 end
