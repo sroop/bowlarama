@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'neat'
 gem 'refills'
 gem 'sass-rails', '~> 4.0.3'
+gem 'select2-rails'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'turbolinks'
@@ -24,6 +25,7 @@ gem 'spring',        group: :development
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'launchy'
   gem 'pry'
   gem 'rspec-rails'
   gem 'shoulda-matchers', require: false

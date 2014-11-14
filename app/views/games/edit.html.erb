@@ -4,6 +4,7 @@
       collection: User.all,
       label_method: :username,
       value_method: :id,
-      label: "Opponent" %>
+      label: "Opponent",
+      input_html:  { class: "select2" } %>
   <%= f.submit %>
 <% end %>

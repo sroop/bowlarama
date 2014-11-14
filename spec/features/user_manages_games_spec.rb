@@ -19,6 +19,7 @@ feature "Games" do
     expect(page).to have_content('Awesome Game')
     click_on 'Awesome Game'
     expect(page).to have_content('drusk0')
+    expect(page).to have_content('sr00p')
   end
 
   scenario 'Editing and updating a game' do
@@ -31,8 +32,9 @@ feature "Games" do
     click_on 'Add more players'
     select 'r00ni'
     click_on 'Update'
-    expect(page).to have_content('r00ni')
     expect(page).to have_content('drusk0')
+    expect(page).to have_content('r00ni')
+    expect(page).to have_content('sr00p')
   end
 
 end

@@ -7,6 +7,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    @game.users << current_user
   end
 
   def create
@@ -25,6 +26,7 @@ class GamesController < ApplicationController
 
   def edit
     @game = Game.find(params[:id])
+    @game.users << current_user unless @game.users.include?(current_user)
   end
 
   def update
