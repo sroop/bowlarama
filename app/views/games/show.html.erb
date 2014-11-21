@@ -1,5 +1,5 @@
+<%= content_tag :h1, @game.title %>
 <%= link_to 'Add more players', edit_game_path(@game) %>
-
 <% @game.users.each do |user| %>
   <%= content_tag :p, user.username %>
 <% end %>

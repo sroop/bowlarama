@@ -13,7 +13,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(permitted_params)
     if @game.save!
-      redirect_to games_path, flash: { success: "Saved successfully" }
+      redirect_to game_path(@game.id), flash: { success: "Saved successfully" }
     else
       flash.now[:error] = "Something went wrong.."
       render :new
