@@ -5,6 +5,7 @@ feature "Games" do
   let!(:sroop) { create(:user, username: "sr00p") }
   let!(:drew) { create(:user, username: "drusk0") }
   let!(:rain) { create(:user, username: "r00ni") }
+  let!(:game) { create(:game) }
 
   before do
     login_as sroop
@@ -35,6 +36,12 @@ feature "Games" do
     expect(page).to have_content('drusk0')
     expect(page).to have_content('r00ni')
     expect(page).to have_content('sr00p')
+  end
+
+  scenario 'Deleting a game' do
+    expect(page).to have_content("Tekken Bowl")
+    click_on 'Delete'
+    expect(page).not_to have_content("Tekken Bowl")
   end
 
 end

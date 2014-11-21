@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :game do
-    title "MyString"
+    title "Tekken Bowl"
   end
 end
