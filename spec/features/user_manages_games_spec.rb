@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Games" do
+feature "User manages games" do
 
   let!(:sroop) { create(:user, username: "sr00p") }
   let!(:drew) { create(:user, username: "drusk0") }

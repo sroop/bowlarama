@@ -4,4 +4,5 @@
 <%= link_to 'Add more players', edit_game_path(@game) %>
 <% @game.users.each do |user| %>
   <%= content_tag :p, user.username %>
+  <%= render 'scoresheets/scoresheet' %>
 <% end %>
