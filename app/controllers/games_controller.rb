@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :fetch_game, only: [:show, :edit, :update, :destroy]
 
   def index
     @games = Game.all
@@ -21,16 +22,13 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
   end
 
   def edit
-    @game = Game.find(params[:id])
     @game.users << current_user unless @game.users.include?(current_user)
   end
 
   def update
-    @game = Game.find(params[:id])
       if @game.update_attributes(permitted_params)
         redirect_to [@game], flash: { success: t('flash.saved') }
       else
@@ -40,12 +38,15 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:id])
     @game.destroy
     redirect_to root_path
   end
 
   private
+
+  def fetch_game
+    @game = Game.find(params[:id])
+  end
 
   def permitted_params
     params.require(:game).permit(:title, user_ids: [])
