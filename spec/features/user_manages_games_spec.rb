@@ -17,6 +17,7 @@ feature "User manages games" do
     fill_in 'Title', with: 'Awesome Game'
     select 'drusk0'
     click_on 'Create game'
+    expect(page).to have_content("Saved successfully")
     expect(page).to have_content('Awesome Game')
     expect(page).to have_content('drusk0')
     expect(page).to have_content('sr00p')
@@ -32,10 +33,11 @@ feature "User manages games" do
     end
 
     scenario 'Adding more players' do
-      #expect(page).to have_content("Success")
+      expect(page).to have_content("Saved successfully")
       click_on 'Add more players'
       select 'r00ni'
       click_on 'Update'
+      expect(page).to have_content("Saved successfully")
       expect(page).to have_content('drusk0')
       expect(page).to have_content('r00ni')
       expect(page).to have_content('sr00p')
@@ -45,6 +47,7 @@ feature "User manages games" do
       click_on 'Edit title'
       fill_in 'Title', with: 'Bowling Amigos'
       click_on 'Update'
+      expect(page).to have_content("Saved successfully")
       expect(page).to have_content('Bowling Amigos')
       expect(page).not_to have_content('Awesome Game')
     end
@@ -55,6 +58,7 @@ feature "User manages games" do
     expect(page).to have_content("Tekken Bowl")
     click_on 'Delete'
     expect(page).not_to have_content("Tekken Bowl")
+    expect(page).to have_content("Deleted!")
   end
 
 end

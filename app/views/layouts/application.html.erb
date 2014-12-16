@@ -10,9 +10,13 @@
 
   <%= render 'refills/navigation' %>
 
-  <div id="flash-notice"><%= notice %> <%= alert %></div>
-  
   <div class="container">
+    <% unless notice.blank? %>
+        <div class="alert alert-success"><%= notice %></div>
+    <% end %>
+    <% unless alert.blank? %>
+        <div class="alert alert-success"><%= alert %></div>
+    <% end %>
     <%= yield %>
   </div>
 </body>

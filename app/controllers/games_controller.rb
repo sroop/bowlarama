@@ -14,7 +14,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(permitted_params)
     if @game.save!
-      redirect_to game_path(@game.id), flash: { success: "Saved successfully" }
+      redirect_to @game, alert: "Saved successfully"
     else
       flash.now[:error] = "Something went wrong.."
       render :new
@@ -30,7 +30,7 @@ class GamesController < ApplicationController
 
   def update
       if @game.update_attributes(permitted_params)
-        redirect_to [@game], flash: { success: t('flash.saved') }
+        redirect_to @game, alert: "Saved successfully"
       else
         flash.now[:error] = "Something wrong..."
         render :edit
@@ -39,7 +39,7 @@ class GamesController < ApplicationController
 
   def destroy
     @game.destroy
-    redirect_to root_path
+    redirect_to root_path, alert: "Deleted!"
   end
 
   private
